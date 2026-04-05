@@ -1,37 +1,68 @@
 #include <stdio.h>
+#include <string.h> // 1. Adicione esta biblioteca
 
-int main (){
+int main () {
+    int opcaomenu, opcaocadastro, opcaowalderney;
+    char cpfacesso[20], senhaacesso[20];
 
-    // VARIÁVEIS DAS NOTAS
-    float n1, n2, n3, n4;
-    float media;
+    char nomewalderney[50] = "WALDERNEY SILVA DE SOUZA JÚNIOR", senhaacessowalderney[20] = "123456", cpfwalderney[20] = "02217625233";
 
-    //TELA DE INTERAÇAO COM USUÁRIO
-    printf("\n------ SISTEMA DE CÁLCULO DE MÉDIA DE NOTAS ESCOLARES ------\n");
+    printf("MENU DE ACESSO\n");
+    printf("\n1 - Acessar o sistema\n2 - Cadastrar\n3 - Sair\n");
+    scanf("%d", &opcaomenu);
 
-    printf("Digite a sua NOTA 1: \n");
-    scanf(" %f", &n1);
+    switch(opcaomenu) {
+        case 1:
+        while (strcmp(senhaacesso, senhaacessowalderney) != 0 || strcmp(cpfacesso, cpfwalderney) != 0) {
+            printf("Digite seu CPF: ");
+            scanf("%s", cpfacesso);
+            printf("Digite sua senha: ");
+            scanf("%s", senhaacesso);
 
-    printf("Digite a sua NOTA 2: \n");
-    scanf(" %f", &n2);
+            // 2. Use strcmp para comparar as strings
+            if (strcmp(senhaacesso, senhaacessowalderney) == 0 && strcmp(cpfacesso, cpfwalderney) == 0) {
+                printf("Acesso concedido!\n Bem-vindo, %s!\n", nomewalderney);
 
-    printf("Digite a sua NOTA 3: \n");
-    scanf(" %f", &n3);
+                printf("\n --- O que deseja fazer? --- \n");
+                printf("1 - Ver perfil\n2 - Editar perfil\n3 - Sair\n");
+                scanf("%d", &opcaowalderney);
+                switch(opcaowalderney) {
+                    case 1:
+                        printf("Nome: %s\nCPF: %s\n", nomewalderney, cpfwalderney);
+                        break;
+                    case 2:
+                        printf("Funcionalidade de edição de perfil ainda não implementada.\n");
+                        break;
+                    case 3:
+                        printf("Saindo...\n");
+                        break;
+                    default:
+                        printf("Opção inválida!\n");
+                }
+            } else {
+                printf("Acesso negado! CPF ou senha incorretos. Tente novamente.\n");
+            }
 
-    printf("Digite a sua NOTA 4: \n");
-    scanf(" %f", &n4);
+        }
 
-    // SOMA DAS NOTAS
-    printf("\nCARREGANDO ...\n");
-    media = (n1+n2+n3+n4) / 4;
+            break;
+            
+        case 2:
+            printf("Serviço indisponível.\n");
+            break;
+            
+        case 3:
+            printf("Saindo...\n");
+            break;
+            
+        default:
+            printf("Opção inválida!\n");
+    }
 
-    // APRESENTAÇAO DA MÉDIA
-    printf("Sua média é: %.2f", media);
 
 
 
 
 
-return 0;
-
+    return 0;
 }
