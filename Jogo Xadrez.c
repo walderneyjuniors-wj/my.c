@@ -209,9 +209,12 @@ int main() {
         printf("Movimento do Peão:\n");
         int p = 1;
         while (p <= peao) {
-            if (direcaopeao == 1) printf("Cima\n");
-        else if (direcaopeao == 2) printf("Cima, Direita (Captura)\n");
-        else if (direcaopeao == 3) printf("Cima, Esquerda (Captura)\n");
+            if ((direcaopeao == 1) && (peao == 1) && (peao == 2)) printf("Cima\n");
+        else if ((direcaopeao == 2) && (peao != 2)) printf("Cima, Direita (Captura)\n");
+        else if ((direcaopeao == 3) && (peao != 2)) printf("Cima, Esquerda (Captura)\n");
+        else {
+            printf("Jogada não permitida, revise as opções escolhidas");
+        }
             p++; // Incrementa para não criar um loop infinito
         }
         printf("\n");
