@@ -5,6 +5,7 @@ int main() {
     int torre = 5;
     int bispo = 5;
     int rainha = 8;
+    int cavalo = 1;
 
     // --- MOVIMENTAÇÃO DA TORRE ---
     // Usando FOR: inicialização; condição; incremento
@@ -33,6 +34,16 @@ int main() {
         r++;
     } while (r <= rainha);
     printf("\n");
+
+    // --- MOVIMENTAÇÃO DO CAVALO ---
+    // Usando WHILE e FOR para simular os movimentos do cavalo
+    printf("Movimento do Cavalo:\n");
+    while (cavalo --) {
+        for (int c = 0; c < 2; c++) {
+            printf("Cima\n");
+        }
+        printf("Direita\n");
+    }
 
     return 0;
 }
