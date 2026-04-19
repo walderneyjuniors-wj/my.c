@@ -1,16 +1,28 @@
 #include <stdio.h>
- 
-int main() {
-    char letra;
 
+void pecatorre(int n) { // Função de teste para verificar a estrutura do código
+    if (n > 0) {
+        printf("T%d\n", n); // Imprime o valor de n para verificar a estrutura do código
 
-    for (int i = 1; i <= 30; i++) {
-        letra = 'A';
-        for (int j = 1; j <= i; j++) {
-            printf("%c\t", letra);
-            letra++;
-        }
-        printf("\n");
+        pecatorre(n - 1); // Chamada recursiva da função de teste
     }
+}
+
+int main() {
+    int torre;
+    printf("Digite um número para testar a função pecatorre: ");
+    scanf("%d", &torre); // Lê o número digitado pelo usuário 
+    printf("Iniciando o teste...\n");
+    pecatorre(torre); // Chama a função de teste
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
