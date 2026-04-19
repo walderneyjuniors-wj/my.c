@@ -42,11 +42,11 @@ void moverpecorainha (int rainha, int direcaorainha) {
     }
 
 
-
 int main() {
-    // Variáveis para controlar a quantidade de movimentos
+    // Nível Novato - Movimentação das Peças
+    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+     // Variáveis para controlar a quantidade de movimentos
     int torre, cavalo = 1, bispo, rainha, rei = 1, peao, escolhamenu;
-    int direcaotorre, direcaocavalo, direcaobispo, direcaorainha, direcaorei, direcaopeao;
 
     // MENU INTERATIVO
     printf("Bem-vindo ao Jogo de Xadrez!\n");
@@ -77,14 +77,15 @@ int main() {
         printf("Quantidade de movimentos para a Torre: \n"); // Exibe a quantidade de movimentos disponíveis para a torre
         scanf("%d", &torre); // Lê a quantidade de movimentos que o usuário deseja para a torre
         if (torre > 7) { // Verifica se a quantidade de movimentos excede o limite da torre
-            printf("A Torre pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
+            printf("⚠️⚠️⚠️\nA Torre pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
             torre = 7; // Ajusta a quantidade de movimentos para o máximo permitido
         }
+
         printf("Movimento da Torre:\n");
         
-
         moverpecatorre(torre, direcaotorre); // Chama a função para simular os movimentos da torre
 
+        printf("\n"); // Pula linha para organizar a saída
         break;
 
         case 2:
@@ -149,13 +150,14 @@ int main() {
         printf("Quantidade de movimentos para o Bispo: \n"); // Exibe a quantidade de movimentos disponíveis para o bispo
         scanf("%d", &bispo); // Lê a quantidade de movimentos que o usuário deseja para o bispo
         if (bispo > 7) { // Verifica se a quantidade de movimentos excede o limite do bispo
-            printf("O Bispo pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
+            printf("⚠️⚠️⚠️\nO Bispo pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
             bispo = 7; // Ajusta a quantidade de movimentos para o máximo permitido
         }
         printf("Movimento do Bispo:\n");
      
         moverpecabispo(bispo, direcaobispo); // Chama a função para simular os movimentos do bispo
-
+        
+        printf("\n");
         break;
 
         case 4:
@@ -168,13 +170,14 @@ int main() {
         printf("Quantidade de movimentos para a Rainha: \n"); // Exibe a quantidade de movimentos disponíveis para a rainha
         scanf("%d", &rainha); // Lê a quantidade de movimentos que o usuário deseja para a rainha
         if (rainha > 7) { // Verifica se a quantidade de movimentos excede o limite da rainha
-            printf("A Rainha pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
+            printf("⚠️⚠️⚠️\nA Rainha pode se mover no máximo 7 vezes. Ajustando para 7 movimentos.\n");
             rainha = 7; // Ajusta a quantidade de movimentos para o máximo permitido
         }
         printf("Movimento da Rainha:\n");
-       
+      
         moverpecorainha(rainha, direcaorainha); // Chama a função para simular os movimentos da rainha
         
+        printf("\n");
         break;
 
         case 5:
@@ -187,7 +190,7 @@ int main() {
         printf("Quantidade de movimentos para o Rei: \n"); // Exibe a quantidade de movimentos disponíveis para o rei
         scanf("%d", &rei); // Lê a quantidade de movimentos que o usuário deseja para o rei
         if (rei > 1) { // Verifica se a quantidade de movimentos excede o limite do rei
-            printf("O Rei pode se mover no máximo 1 vez. Ajustando para 1 movimento.\n");
+            printf("⚠️⚠️⚠️\nO Rei pode se mover no máximo 1 vez. Ajustando para 1 movimento.\n");
             rei = 1; // Ajusta a quantidade de movimentos para o máximo permitido
         }
 
@@ -215,18 +218,18 @@ int main() {
         printf("Quantidade de movimentos para o Peão: \n");
         scanf("%d", &peao); // Lê a quantidade de movimentos que o usuário deseja para o peão
         if (peao > 2) { // Verifica se a quantidade de movimentos excede o limite do peão
-            printf("O Peão pode se mover no máximo 2 vezes (1 movimento normal e 1 captura). Ajustando para 2 movimentos.\n");
+            printf("⚠️⚠️⚠️\nO Peão pode se mover no máximo 2 vezes para o primeiro movimento.\nPara fazer captura é somente pela diagonal. Ajustando para 2 movimentos.\n");
             peao = 2; // Ajusta a quantidade de movimentos para o máximo permitido
         }
 
         printf("Movimento do Peão:\n");
         int p = 1;
         while (p <= peao) {
-            if ((direcaopeao == 1) && (peao == 1) || (peao == 2)) printf("Cima\n");
+            if ((direcaopeao == 1) && (peao == 1) || (direcaopeao == 1) && (peao == 2)) printf("Cima\n");
         else if ((direcaopeao == 2) && (peao != 2)) printf("Cima, Direita (Captura)\n");
         else if ((direcaopeao == 3) && (peao != 2)) printf("Cima, Esquerda (Captura)\n");
         else {
-            printf("Jogada não permitida, revise as opções escolhidas");
+            printf("Jogada não permitida, revise as opções escolhidas\n");
         }
             p++; // Incrementa para não criar um loop infinito
         }
