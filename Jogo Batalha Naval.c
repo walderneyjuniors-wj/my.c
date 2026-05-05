@@ -16,6 +16,7 @@ int main() {
 
     char coluna [10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};  //Identificação das colunas
     int tabuleiro [linhas][colunas] = {0};  //Inicialização do tabuleiro com 0 (vazio)
+    
     /*linha[2][3] = 3; // Horizontal
     linha[2][4] = 3;
     linha[2][5] = 3;
@@ -32,14 +33,14 @@ int main() {
     }
 
     // 2. Navio Horizontal (Ex: Linha 8, Colunas 4 a 6)
-    for (int j = 4; j < 4 + tam_navio; j++) {
+    for (int j = 7; j < 7 + tam_navio; j++) {
         tabuleiro[9][j] = 3;
     }
 
     // 3. Navio Diagonal Principal (Linha e Coluna aumentam juntas)
     // Coordenada inicial: (0, 5) -> (1, 6) -> (2, 7)
     for (int k = 0; k < tam_navio; k++) {
-        tabuleiro[2 + k][5 + k] = 3; // 
+        tabuleiro[4 + k][1 + k] = 3; // 
     }
 
     // 4. Navio Diagonal Secundária (Linha aumenta, Coluna diminui)
@@ -47,6 +48,61 @@ int main() {
     for (int k = 0; k < tam_navio; k++) {
         tabuleiro[5 + k][9 - k] = 3; // 
     }
+
+    // HABILIDADES
+    //CONE
+    int conelinha = 0; // Linha onde o cone será posicionado
+    int conecoluna = 4; // Coluna onde o cone será posicionado
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (j >= 2 - i && j <= 2 + i) {
+                int l = conelinha + i;
+                int c = (conecoluna - 2) + j;
+                if (l >= 0 && l < linhas && c >= 0 && c < colunas) {
+                    tabuleiro[l][c] = 5; // 5 representa a área da habilidade
+                }
+            }
+        }
+    }
+
+    // CRUZ
+    int cruzlinha = 4; // Centro da cruz
+    int cruzcoluna = 5;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            // Se for a linha do meio ou a coluna do meio do bloco 3x3
+            if (i == 1 || j == 2) {
+                int l = (cruzlinha - 1) + i;
+                int c = (cruzcoluna - 1) + j;
+                if (l >= 0 && l < linhas && c >= 0 && c < colunas) {
+                    tabuleiro[l][c] = 5;
+                }
+            }
+        }
+    }
+
+    // OCTAEDRO
+    int octalinha = 8; // Centro do losango
+    int octacoluna = 1;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            // Lógica de distância: a soma da distância do centro não pode ser maior que 1
+            // (i-1) é a distância da linha atual para o centro (linha 1)
+            int distL = (i >= 1) ? i - 1 : 1 - i;
+            int distC = (j >= 1) ? j - 1 : 1 - j;
+            
+            if (distL + distC <= 1) {
+                int l = (octalinha - 1) + i;
+                int c = (octacoluna - 1) + j;
+                if (l >= 0 && l < linhas && c >= 0 && c < colunas) {
+                    tabuleiro[l][c] = 5;
+                }
+            }
+        }
+    }
+
 
     printf("\n   ===   BEM VINDO A BATALHA NAVAL   ===   \n");   
     printf("\n");
@@ -68,35 +124,8 @@ int main() {
         }
         printf("\n");
     }
-    
 
 
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
 
     return 0;
 }
